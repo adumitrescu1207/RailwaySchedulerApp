@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Header from './Header';
 import Footer from './Footer';
 
 interface LayoutProps {
@@ -8,18 +7,11 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div style={containerStyles}>
-      <Header />
+    <>
       <main style={mainStyles}>{children}</main>
       <Footer />
-    </div>
+    </>
   );
-};
-
-const containerStyles: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: '100vh',
 };
 
 const mainStyles: React.CSSProperties = {

@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 const headerStyles: React.CSSProperties = {
     display: 'flex',
-    position: 'relative',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '5px',
     backgroundColor: '#F5C09C',
     borderBottom: '1px solid #e0e0e0',
-    width: '100%',
+    width: '100vw',
+    justifyContent: 'space-between'
+    
   };
   
   const linkStyles: React.CSSProperties = {

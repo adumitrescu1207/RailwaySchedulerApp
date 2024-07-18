@@ -9,10 +9,12 @@ import AddTrain from './pages/AddTrain.tsx';
 import UpdateTrain from './pages/UpdateTrain.tsx';
 import RemoveTrain from './pages/RemoveTrain.tsx';
 import Layout from './pages/Layout.tsx';
+import Header from './pages/Header.tsx';
 
 const AppRouter: React.FC = () => {
   return (
     <Router>
+      <Header/>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
