@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(219, 110, 110, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -15,11 +15,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #cb9696;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #ffce64;
 }
 
 body {
@@ -57,12 +57,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #ca9393ed;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #cb9696;
   }
 }

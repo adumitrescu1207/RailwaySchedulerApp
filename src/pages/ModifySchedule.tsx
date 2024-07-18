@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ModifySchedule: React.FC = () => {
 
@@ -7,9 +8,9 @@ const ModifySchedule: React.FC = () => {
       <h1>Modify Schedule</h1>
       <nav>
         <ul>
-          <li><a href="/modify/addTrain">AddTrain</a></li>
-          <li><a href="/modify/updateTrain">UpdateTrain</a></li>
-          <li><a href="/modify/removeTrain">RemoveTrain</a></li>
+          <li><Link to="/modify/addTrain">AddTrain</Link></li>
+          <li><Link to="/modify/updateTrain">UpdateTrain</Link></li>
+          <li><Link to="/modify/removeTrain">RemoveTrain</Link></li>
         </ul>
       </nav>
     </div>

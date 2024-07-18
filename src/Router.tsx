@@ -8,20 +8,23 @@ import ModifySchedule from './pages/ModifySchedule.tsx';
 import AddTrain from './pages/AddTrain.tsx';
 import UpdateTrain from './pages/UpdateTrain.tsx';
 import RemoveTrain from './pages/RemoveTrain.tsx';
+import Layout from './pages/Layout.tsx';
 
 const AppRouter: React.FC = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/getSourceByTime" element={<SearchBySource />} />
-        <Route path="/getDestinationByTime" element={<SearchByDestination />} />
-        <Route path="/getById" element={<SearchById />} />
-        <Route path="/modify" element={<ModifySchedule />} />
-        <Route path="/modify/addTrain" element={<AddTrain />} />
-        <Route path="/modify/updateTrain" element={<UpdateTrain />} />
-        <Route path="/modify/removeTrain" element={<RemoveTrain />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/getSourceByTime" element={<SearchBySource />} />
+          <Route path="/getDestinationByTime" element={<SearchByDestination />} />
+          <Route path="/getById" element={<SearchById />} />
+          <Route path="/modify" element={<ModifySchedule />} />
+          <Route path="/modify/addTrain" element={<AddTrain />} />
+          <Route path="/modify/updateTrain" element={<UpdateTrain />} />
+          <Route path="/modify/removeTrain" element={<RemoveTrain />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 };
