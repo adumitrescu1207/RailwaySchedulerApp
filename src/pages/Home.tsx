@@ -10,31 +10,34 @@ const Home: React.FC = () => {
         <li><Link to="/getById" style={linkStyles}>Search by ID</Link></li>
         <li><Link to="/modify" style={linkStyles}>Modify Schedule</Link></li>
       </ul>
-      <footer style={footerStyles}>
-      </footer>
     </div>
   );
 };
 
 const containerStyles: React.CSSProperties = {
-  padding: '20px',
-  textAlign: 'left',
+  padding: '40px',
+  textAlign: 'center',
+  backgroundColor: '#f4f4f4',
+  minHeight: '100%',
+  fontFamily: 'Arial, sans-serif',
 };
 
 const listStyles: React.CSSProperties = {
   listStyleType: 'none',
   padding: '0',
+  margin: '0 auto',
+  maxWidth: '300px',
 };
 
 const linkStyles: React.CSSProperties = {
   textDecoration: 'none',
-  color: '#cb9696',
+  color: '#000',
   display: 'block',
   margin: '10px 0',
-};
-
-const footerStyles: React.CSSProperties = {
-  marginTop: '20px',
+  fontSize: '1.1rem',
+  padding: '10px',
+  borderRadius: '5px',
+  backgroundColor: '#fff',
 };
 
 export default Home;

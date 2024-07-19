@@ -7,13 +7,14 @@ const headerStyles: React.CSSProperties = {
     backgroundColor: '#F5C09C',
     borderBottom: '1px solid #e0e0e0',
     width: '100vw',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
     
   };
   
   const linkStyles: React.CSSProperties = {
-    textDecoration: 'none',
-    color: '#ffce64',
+    color: '#724F37',
+    padding: '50px',
+    fontSize: '1.1rem',
   };
   
 const Header: React.FC = () => {

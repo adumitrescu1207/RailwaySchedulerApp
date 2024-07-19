@@ -8,6 +8,7 @@ const RemoveTrain: React.FC = () => {
     axios.delete(`https://localhost:7159/Train/RemoveTrain?id=${id}`)
       .then(() => {
         alert('Train removed successfully');
+        setId('');
       })
       .catch(error => {
         console.error('There was an error removing the train!', error);
@@ -15,12 +16,53 @@ const RemoveTrain: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Remove Train</h1>
-      <input type="text" placeholder="ID" onChange={e => setId(e.target.value)} />
-      <button onClick={handleSubmit}>Remove Train</button>
+    <div style={containerStyles}>
+      <h1 style={headerStyles}>Remove Train</h1>
+      <input
+        type="text"
+        placeholder="Enter Train ID"
+        onChange={e => setId(e.target.value)}
+        value={id}
+        style={inputStyles}
+      />
+      <button onClick={handleSubmit} style={buttonStyles}>Remove Train</button>
     </div>
   );
+};
+
+const containerStyles: React.CSSProperties = {
+  padding: '20px',
+  textAlign: 'center',
+  fontFamily: 'Arial, sans-serif',
+  backgroundColor: '#f9f9f9',
+};
+
+const headerStyles: React.CSSProperties = {
+  fontSize: '2rem',
+  color: '#000',
+  marginBottom: '20px',
+};
+
+const inputStyles: React.CSSProperties = {
+  padding: '10px',
+  fontSize: '1rem',
+  border: '1px solid #ccc',
+  borderRadius: '4px',
+  width: '100%',
+  maxWidth: '400px',
+  boxSizing: 'border-box',
+  marginBottom: '20px',
+};
+
+const buttonStyles: React.CSSProperties = {
+  padding: '10px 20px',
+  fontSize: '1rem',
+  color: '#fff',
+  backgroundColor: '#cb9696',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s',
 };
 
 export default RemoveTrain;
