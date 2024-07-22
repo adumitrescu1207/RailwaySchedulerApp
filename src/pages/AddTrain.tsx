@@ -76,7 +76,8 @@ const containerStyles: React.CSSProperties = {
   padding: '20px',
   textAlign: 'center',
   fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#f9f9f9',
+  backgroundColor: '#f4f4f4',
+  marginBottom: '30px'
 };
 
 const headerStyles: React.CSSProperties = {

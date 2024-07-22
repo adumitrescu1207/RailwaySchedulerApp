@@ -20,7 +20,7 @@ const RemoveTrain: React.FC = () => {
       <h1 style={headerStyles}>Remove Train</h1>
       <input
         type="text"
-        placeholder="Enter Train ID"
+        placeholder="Enter ID"
         onChange={e => setId(e.target.value)}
         value={id}
         style={inputStyles}
@@ -34,7 +34,8 @@ const containerStyles: React.CSSProperties = {
   padding: '20px',
   textAlign: 'center',
   fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#f9f9f9',
+  backgroundColor: '#f4f4f4',
+  marginBottom: '30px'
 };
 
 const headerStyles: React.CSSProperties = {

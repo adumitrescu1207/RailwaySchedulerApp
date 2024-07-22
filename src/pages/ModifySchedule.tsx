@@ -7,9 +7,9 @@ const ModifySchedule: React.FC = () => {
       <h1 style={headerStyles}>Modify Schedule</h1>
       <nav>
         <ul style={navListStyles}>
-          <li style={navItemStyles}><Link to="/modify/addTrain" style={linkStyles}>Add Train</Link></li>
-          <li style={navItemStyles}><Link to="/modify/updateTrain" style={linkStyles}>Update Train</Link></li>
-          <li style={navItemStyles}><Link to="/modify/removeTrain" style={linkStyles}>Remove Train</Link></li>
+          <li style={listStyles}><Link to="/modify/addTrain" style={linkStyles}>Add Train</Link></li>
+          <li style={listStyles}><Link to="/modify/updateTrain" style={linkStyles}>Update Train</Link></li>
+          <li style={listStyles}><Link to="/modify/removeTrain" style={linkStyles}>Remove Train</Link></li>
         </ul>
       </nav>
     </div>
@@ -17,10 +17,11 @@ const ModifySchedule: React.FC = () => {
 };
 
 const containerStyles: React.CSSProperties = {
-  padding: '20px',
+  padding: '40px',
   textAlign: 'center',
+  backgroundColor: '#f4f4f4',
+  minHeight: '100%',
   fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#f9f9f9',
 };
 
 const headerStyles: React.CSSProperties = {
@@ -35,20 +36,21 @@ const navListStyles: React.CSSProperties = {
   margin: '0',
 };
 
-const navItemStyles: React.CSSProperties = {
-  margin: '10px 0',
+const listStyles: React.CSSProperties = {
+  listStyleType: 'none',
+  padding: '0',
+  margin: '0 auto',
+  maxWidth: '300px',
 };
 
 const linkStyles: React.CSSProperties = {
   textDecoration: 'none',
-  color: '#cb9696',
-  fontSize: '1.2rem',
+  color: '#000',
   display: 'block',
+  margin: '10px 0',
+  fontSize: '1.1rem',
   padding: '10px',
   borderRadius: '5px',
   backgroundColor: '#fff',
-  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  transition: 'background-color 0.3s, color 0.3s',
 };
-
 export default ModifySchedule;

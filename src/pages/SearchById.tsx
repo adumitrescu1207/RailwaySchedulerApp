@@ -18,14 +18,17 @@ const SearchById: React.FC = () => {
     setError(null);
     axios.get(`https://localhost:7159/Train/GetById/${id}`)
       .then(response => {
-        console.log('API response:', response.data);
         setTrain(response.data);
         setIsSearched(true);
       })
       .catch(error => {
-        console.error('There was an error fetching the train!', error);
-        setError('Failed to fetch train data. Please check the ID and try again.');
-        setIsSearched(false);
+        if(error.response && error.response.status === 400){
+          setError('No trains found for the specified ID.');
+          setIsSearched(false);
+        }
+        else {
+          setError('Failed to fetch train data. Please try again.');
+        }
       });
   };
 
@@ -40,9 +43,9 @@ const SearchById: React.FC = () => {
         style={inputStyles}
       />
       <button onClick={handleSearch} style={buttonStyles}>Search</button>
-      {error && <p style={errorStyles}>{error}</p>} {}
+      {error && <div style={errorStyles}>{error}</div>}
       {isSearched && !error && (
-        <div style={dataContainerStyles}>
+        <div style={containerStyles}>
           <ul style={listStyles}>
             <li>ID: {train.id}</li>
             <li>Source: {train.source}</li>
@@ -91,14 +94,6 @@ const buttonStyles: React.CSSProperties = {
   transition: 'background-color 0.3s',
 };
 
-const dataContainerStyles: React.CSSProperties = {
-  marginTop: '30px',
-  textAlign: 'left',
-  display: 'inline-block',
-  maxWidth: '600px',
-  width: '100%',
-};
-
 const listStyles: React.CSSProperties = {
   listStyleType: 'none',
   padding: '10px',
@@ -117,6 +112,7 @@ const listStyles: React.CSSProperties = {
 const errorStyles: React.CSSProperties = {
   color: 'red',
   marginTop: '20px',
+  fontSize: '1rem',
 };
 
 export default SearchById;

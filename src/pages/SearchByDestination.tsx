@@ -1,51 +1,67 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import '../MyStyles.css';
 
 const SearchByDestination: React.FC = () => {
   const [destination, setDestination] = useState('');
   const [trains, setTrains] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
 
   const handleSearch = () => {
+
+    setError(null);
+    setTrains([]);
+
     axios.get(`https://localhost:7159/Train/GetDestinationByTime/${destination}`)
       .then(response => {
         setTrains(response.data);
       })
       .catch(error => {
-        console.error('There was an error fetching the trains!', error);
+        if (error.response && error.response.status === 400) {
+          setError('No trains found for the specified destination.');
+        } else {
+          setError('Failed to fetch train data. Please try again.');
+        }
       });
   };
 
   return (
     <div style={containerStyles}>
-      <h1 style={headerStyles}>Search by Destination</h1>
+      <h1 style={headerStyles}>Search by Source</h1>
       <input
         type="text"
         value={destination}
         onChange={(e) => setDestination(e.target.value)}
-        placeholder="Enter destination"
+        placeholder="Enter source"
         style={inputStyles}
       />
       <button onClick={handleSearch} style={buttonStyles}>Search</button>
-      <ul style={listStyles}>
-        {trains.map((train) => (
-          <li key={train.id} style={listItemStyles}>
-            <div>Id: {train.id}</div>
-            <div>Source: {train.source}</div>
-            <div>Destination: {train.destination}</div>
-            <div>TimeSource: {train.timeSource}</div>
-            <div>TimeDestination: {train.timeDestination}</div>
-          </li>
+      {error && <div style={errorStyles}>{error}</div>}
+      <TransitionGroup component="ul" style={listStyles}>
+        {trains.map((train: any) => (
+          <CSSTransition key={train.id} timeout={1000} classNames="fade">
+            <li style={listItemStyles}>
+              <div>Id: {train.id}</div>
+              <div>Source: {train.source}</div>
+              <div>Destination: {train.destination}</div>
+              <div>TimeSource: {train.timeSource}</div>
+              <div>TimeDestination: {train.timeDestination}</div>
+            </li>
+          </CSSTransition>
         ))}
-      </ul>
+      </TransitionGroup>
     </div>
   );
-};
+}
 
 const containerStyles: React.CSSProperties = {
   padding: '20px',
   textAlign: 'center',
   fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#f9f9f9',
+  backgroundColor: '#f4f4f4',
+  marginBottom: '30px'
 };
 
 const headerStyles: React.CSSProperties = {
@@ -76,6 +92,12 @@ const buttonStyles: React.CSSProperties = {
   transition: 'background-color 0.3s',
 };
 
+const errorStyles: React.CSSProperties = {
+  color: 'red',
+  marginTop: '20px',
+  fontSize: '1rem',
+};
+
 const listStyles: React.CSSProperties = {
   listStyleType: 'none',
   padding: '0',
@@ -95,5 +117,6 @@ const listItemStyles: React.CSSProperties = {
   borderRadius: '4px',
   backgroundColor: '#fff',
 };
+
 
 export default SearchByDestination;

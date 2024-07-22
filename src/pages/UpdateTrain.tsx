@@ -56,15 +56,6 @@ const UpdateTrain: React.FC = () => {
           <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} style={formStyles}>
             <input
               type="text"
-              name="id"
-              value={train.id}
-              onChange={handleChange}
-              placeholder="ID"
-              style={inputStyles}
-              readOnly
-            />
-            <input
-              type="text"
               name="source"
               value={train.source}
               onChange={handleChange}
@@ -107,7 +98,7 @@ const containerStyles: React.CSSProperties = {
   padding: '20px',
   textAlign: 'center',
   fontFamily: 'Arial, sans-serif',
-  backgroundColor: '#f9f9f9',
+  backgroundColor: '#f4f4f4',
 };
 
 const headerStyles: React.CSSProperties = {
@@ -124,6 +115,7 @@ const subHeaderStyles: React.CSSProperties = {
 
 const formContainerStyles: React.CSSProperties = {
   marginTop: '30px',
+  marginBottom: '30px'
 };
 
 const formStyles: React.CSSProperties = {
