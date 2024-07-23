@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { formatTime } from '../utils/timeFormatter.tsx';
 
 const SearchById: React.FC = () => {
   const [id, setId] = useState('');
@@ -50,8 +51,8 @@ const SearchById: React.FC = () => {
             <li>ID: {train.id}</li>
             <li>Source: {train.source}</li>
             <li>Destination: {train.destination}</li>
-            <li>Time Source: {train.timeSource}</li>
-            <li>Time Destination: {train.timeDestination}</li>
+            <li>Time Source: {formatTime(train.timeSource)}</li>
+            <li>Time Destination: {formatTime(train.timeDestination)}</li>
           </ul>
         </div>
       )}

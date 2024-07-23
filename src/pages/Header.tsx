@@ -21,8 +21,8 @@ const headerStyles: React.CSSProperties = {
     padding: '50px'
   };
   const imageStyles: React.CSSProperties ={
-    width: '230px',
-    height: '230px'
+    width: '15%',
+    height: '15%'
   };
   
 const Header: React.FC = () => {

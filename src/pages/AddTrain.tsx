@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { formatTime } from '../utils/timeFormatter.tsx';
 
 const AddTrain: React.FC = () => {
   const [train, setTrain] = useState({

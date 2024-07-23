@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../MyStyles.css';
+import { formatTime } from '../utils/timeFormatter.tsx';
 
 const SearchBySource: React.FC = () => {
   const [source, setSource] = useState('');
@@ -44,8 +45,8 @@ const SearchBySource: React.FC = () => {
               <div>Id: {train.id}</div>
               <div>Source: {train.source}</div>
               <div>Destination: {train.destination}</div>
-              <div>TimeSource: {train.timeSource}</div>
-              <div>TimeDestination: {train.timeDestination}</div>
+              <div>TimeSource: {formatTime(train.timeSource)}</div>
+              <div>TimeDestination: {formatTime(train.timeDestination)}</div>
             </li>
           </CSSTransition>
         ))}

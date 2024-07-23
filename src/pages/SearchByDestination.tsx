@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../MyStyles.css';
+import { formatTime } from '../utils/timeFormatter.tsx';
 
 const SearchByDestination: React.FC = () => {
   const [destination, setDestination] = useState('');
@@ -29,12 +30,12 @@ const SearchByDestination: React.FC = () => {
 
   return (
     <div style={containerStyles}>
-      <h1 style={headerStyles}>Search by Source</h1>
+      <h1 style={headerStyles}>Search by Destination</h1>
       <input
         type="text"
         value={destination}
         onChange={(e) => setDestination(e.target.value)}
-        placeholder="Enter source"
+        placeholder="Enter destination"
         style={inputStyles}
       />
       <button onClick={handleSearch} style={buttonStyles}>Search</button>
@@ -46,8 +47,8 @@ const SearchByDestination: React.FC = () => {
               <div>Id: {train.id}</div>
               <div>Source: {train.source}</div>
               <div>Destination: {train.destination}</div>
-              <div>TimeSource: {train.timeSource}</div>
-              <div>TimeDestination: {train.timeDestination}</div>
+              <div>TimeSource: {formatTime(train.timeSource)}</div>
+              <div>TimeDestination: {formatTime(train.timeDestination)}</div>
             </li>
           </CSSTransition>
         ))}
