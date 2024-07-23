@@ -5,14 +5,17 @@ const RemoveTrain: React.FC = () => {
   const [id, setId] = useState('');
 
   const handleSubmit = () => {
-    axios.delete(`https://localhost:7159/Train/RemoveTrain?id=${id}`)
-      .then(() => {
-        alert('Train removed successfully');
-        setId('');
-      })
-      .catch(error => {
-        console.error('There was an error removing the train!', error);
-      });
+    const confirm = window.confirm('Are you sure you want to remove this train?');
+    if (confirm) {
+      axios.delete(`https://localhost:7159/Train/RemoveTrain?id=${id}`)
+        .then(() => {
+          alert('Train removed successfully');
+          setId('');
+        })
+        .catch(error => {
+          console.error('There was an error removing the train!', error);
+        });
+    }
   };
 
   return (

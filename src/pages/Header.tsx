@@ -18,7 +18,8 @@ const headerStyles: React.CSSProperties = {
   };
 
   const titleStyles: React.CSSProperties = {
-    padding: '50px'
+    padding: '50px',
+    fontSize: '3.2rem'
   };
   const imageStyles: React.CSSProperties ={
     width: '15%',
@@ -28,7 +29,7 @@ const headerStyles: React.CSSProperties = {
 const Header: React.FC = () => {
   return (
     <header style={headerStyles}>
-        <h1 style={titleStyles}>Railway Scheduler</h1>
+        <Link to="/about" style={titleStyles}>Railway Scheduler</Link>
         <img src={images} style={imageStyles}/>
         <Link to="/" style={linkStyles}>Home</Link>
     </header>

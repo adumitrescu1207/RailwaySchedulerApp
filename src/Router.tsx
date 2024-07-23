@@ -10,6 +10,7 @@ import UpdateTrain from './pages/UpdateTrain.tsx';
 import RemoveTrain from './pages/RemoveTrain.tsx';
 import Layout from './pages/Layout.tsx';
 import Header from './pages/Header.tsx';
+import AboutUs from './pages/AboutUs.tsx';
 
 const AppRouter: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter: React.FC = () => {
           <Route path="/modify/addTrain" element={<AddTrain />} />
           <Route path="/modify/updateTrain" element={<UpdateTrain />} />
           <Route path="/modify/removeTrain" element={<RemoveTrain />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </Layout>
     </Router>
