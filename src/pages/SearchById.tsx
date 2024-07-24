@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { formatTime } from '../utils/timeFormatter.tsx';
+import TrainDetails from '../utils/trainDetails.tsx';
 
 const SearchById: React.FC = () => {
   const [id, setId] = useState('');
@@ -45,15 +46,17 @@ const SearchById: React.FC = () => {
       />
       <button onClick={handleSearch} style={buttonStyles}>Search</button>
       {error && <div style={errorStyles}>{error}</div>}
-      {isSearched && !error && (
+      {isSearched && train && (
         <div style={containerStyles}>
-          <ul style={listStyles}>
-            <li>ID: {train.id}</li>
-            <li>Source: {train.source}</li>
-            <li>Destination: {train.destination}</li>
-            <li>Time Source: {formatTime(train.timeSource)}</li>
-            <li>Time Destination: {formatTime(train.timeDestination)}</li>
-          </ul>
+          <li style={listStyles}>
+              <TrainDetails
+                id={Number(train.id)}
+                source={train.source}
+                destination={train.destination}
+                timeSource={formatTime(train.timeSource)}
+                timeDestination={formatTime(train.timeDestination)}
+              />
+            </li>
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../MyStyles.css';
 import { formatTime } from '../utils/timeFormatter.tsx';
+import TrainDetails from '../utils/trainDetails.tsx';
 
 const SearchByDestination: React.FC = () => {
   const [destination, setDestination] = useState('');
@@ -44,18 +45,20 @@ const SearchByDestination: React.FC = () => {
         {trains.map((train: any) => (
           <CSSTransition key={train.id} timeout={1000} classNames="fade">
             <li style={listItemStyles}>
-              <div>Id: {train.id}</div>
-              <div>Source: {train.source}</div>
-              <div>Destination: {train.destination}</div>
-              <div>TimeSource: {formatTime(train.timeSource)}</div>
-              <div>TimeDestination: {formatTime(train.timeDestination)}</div>
+              <TrainDetails
+                id={train.id}
+                source={train.source}
+                destination={train.destination}
+                timeSource={formatTime(train.timeSource)}
+                timeDestination={formatTime(train.timeDestination)}
+              />
             </li>
           </CSSTransition>
         ))}
       </TransitionGroup>
     </div>
   );
-}
+};
 
 const containerStyles: React.CSSProperties = {
   padding: '20px',

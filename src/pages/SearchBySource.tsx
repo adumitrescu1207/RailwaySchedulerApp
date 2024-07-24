@@ -1,8 +1,10 @@
+// Import necessary modules
 import React, { useState } from 'react';
 import axios from 'axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../MyStyles.css';
-import { formatTime } from '../utils/timeFormatter.tsx';
+import { formatTime } from '../utils/timeFormatter';
+import TrainDetails from '../utils/trainDetails';
 
 const SearchBySource: React.FC = () => {
   const [source, setSource] = useState('');
@@ -42,18 +44,20 @@ const SearchBySource: React.FC = () => {
         {trains.map((train: any) => (
           <CSSTransition key={train.id} timeout={1000} classNames="fade">
             <li style={listItemStyles}>
-              <div>Id: {train.id}</div>
-              <div>Source: {train.source}</div>
-              <div>Destination: {train.destination}</div>
-              <div>TimeSource: {formatTime(train.timeSource)}</div>
-              <div>TimeDestination: {formatTime(train.timeDestination)}</div>
+              <TrainDetails
+                id={train.id}
+                source={train.source}
+                destination={train.destination}
+                timeSource={formatTime(train.timeSource)}
+                timeDestination={formatTime(train.timeDestination)}
+              />
             </li>
           </CSSTransition>
         ))}
       </TransitionGroup>
     </div>
   );
-}
+};
 
 const containerStyles: React.CSSProperties = {
   padding: '20px',
@@ -111,8 +115,9 @@ const listItemStyles: React.CSSProperties = {
   fontSize: '1rem',
   color: '#000',
   margin: '10px 0',
+  marginLeft: '10px',
+  marginRight: '10px',
   padding: '10px',
-  border: '1px solid #ddd',
   borderRadius: '4px',
   backgroundColor: '#fff',
 };
