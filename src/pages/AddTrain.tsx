@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { formatTime } from '../utils/timeFormatter.tsx';
 
 const AddTrain: React.FC = () => {
   const [train, setTrain] = useState({
@@ -11,26 +10,77 @@ const AddTrain: React.FC = () => {
     timeDestination: '',
   });
 
-  const handleSubmit = () => {
-    axios.post('https://localhost:7159/Train/AddTrain', train)
-      .then(() => {
-        alert('Train added successfully');
-        setTrain({
-          id: '',
-          source: '',
-          destination: '',
-          timeSource: '',
-          timeDestination: '',
-        });
+  const [error, setError] = useState<string | null>(null);
+
+  const validateForm = () => {
+    if (train.source.length > 15) {
+      setError('Source must have under 15 characters.');
+      return false;
+    }
+    if (train.destination.length > 15) {
+      setError('Destination must have under 15 characters.');
+      return false;
+    }
+    if (parseInt(train.timeSource) < 0) {
+      setError('Time Source must be positive.');
+      return false;
+    }
+    if (parseInt(train.destination) < 0) {
+      setError('Time Destination must be positive.');
+      return false;
+    }
+    setError(null);
+    return true;
+  };
+
+  const checkIfIdExists = () => {
+    return axios.get(`https://localhost:7159/Train/GetById/${train.id}`)
+      .then(response => {
+        if (response.data) {
+          return true;
+        }
+        return false;
       })
-      .catch(error => {
-        console.error('There was an error adding the train!', error);
+      .catch(() => {
+        return false;
       });
+  };
+
+  const handleSubmit = async () => {
+    setError(null);
+    if (!validateForm()) return;
+
+    try {
+      const idExists = await checkIfIdExists();
+      if (idExists) {
+        setError('ID already exists. Please choose a different ID.');
+        return;
+      }
+
+      axios.post('https://localhost:7159/Train/AddTrain', train)
+        .then(() => {
+          alert('Train added successfully');
+          setTrain({
+            id: '',
+            source: '',
+            destination: '',
+            timeSource: '',
+            timeDestination: '',
+          });
+        })
+        .catch(error => {
+          console.error('There was an error adding the train!', error);
+          setError('All fields must be completed.');
+        });
+    } catch (error) {
+      setError('An unexpected error occurred. Please try again.');
+    }
   };
 
   return (
     <div style={containerStyles}>
       <h1 style={headerStyles}>Add Train</h1>
+      {error && <div style={errorStyles}>{error}</div>}
       <form style={formStyles} onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
         <input
           type="text"
@@ -115,6 +165,12 @@ const buttonStyles: React.CSSProperties = {
   borderRadius: '4px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
+};
+
+const errorStyles: React.CSSProperties = {
+  color: 'red',
+  marginTop: '20px',
+  fontSize: '1rem',
 };
 
 export default AddTrain;
