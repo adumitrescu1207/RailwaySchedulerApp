@@ -10,14 +10,42 @@ const UpdateTrain: React.FC = () => {
     timeSource: '',
     timeDestination: '',
   });
+  const [error, setError] = useState<string | null>(null);
+
+  const validateForm = () => {
+    if (train.source.length > 15) {
+      setError('Source must have under 15 characters.');
+      return false;
+    }
+    if (train.destination.length > 15) {
+      setError('Destination must have under 15 characters.');
+      return false;
+    }
+    if (parseInt(train.timeSource) < 0) {
+      setError('Time Source must be positive.');
+      return false;
+    }
+    if (parseInt(train.timeDestination) < 0) {
+      setError('Time Destination must be positive.');
+      return false;
+    }
+    setError(null);
+    return true;
+  };
 
   const handleSearch = () => {
+    setError(null);
     axios.get(`https://localhost:7159/Train/GetById/${id}`)
       .then(response => {
-        setTrain(response.data);
+        if (response.data) {
+          setTrain(response.data);
+        } else {
+          setError('No train found with the specified ID.');
+        }
       })
       .catch(error => {
         console.error('There was an error fetching the train!', error);
+        setError('Error fetching train data. Please try again.');
       });
   };
 
@@ -30,12 +58,15 @@ const UpdateTrain: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    if (!validateForm()) return;
+
     axios.put('https://localhost:7159/Train/UpdateTrain/', train)
       .then(() => {
         alert('Train updated successfully');
       })
       .catch(error => {
         console.error('There was an error updating the train!', error);
+        setError('There was an error updating the train. Please try again.');
       });
   };
 
@@ -51,6 +82,7 @@ const UpdateTrain: React.FC = () => {
         style={inputStyles}
       />
       <button onClick={handleSearch} style={buttonStyles}>Search</button>
+      {error && <div style={errorStyles}>{error}</div>}
       {train.id && (
         <div style={formContainerStyles}>
           <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} style={formStyles}>
@@ -146,6 +178,12 @@ const buttonStyles: React.CSSProperties = {
   borderRadius: '4px',
   cursor: 'pointer',
   transition: 'background-color 0.3s',
+};
+
+const errorStyles: React.CSSProperties = {
+  color: 'red',
+  marginTop: '20px',
+  fontSize: '1rem',
 };
 
 export default UpdateTrain;

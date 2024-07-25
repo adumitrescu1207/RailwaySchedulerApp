@@ -25,7 +25,7 @@ const AddTrain: React.FC = () => {
       setError('Time Source must be positive.');
       return false;
     }
-    if (parseInt(train.destination) < 0) {
+    if (parseInt(train.timeDestination) < 0) {
       setError('Time Destination must be positive.');
       return false;
     }
