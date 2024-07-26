@@ -142,7 +142,7 @@ const formStyles: React.CSSProperties = {
   flexDirection: 'column',
   alignItems: 'center',
   gap: '15px',
-  maxWidth: '500px',
+  maxWidth: '800px',
   margin: '0 auto',
 };
 
@@ -152,7 +152,7 @@ const inputStyles: React.CSSProperties = {
   border: '1px solid #ccc',
   borderRadius: '4px',
   width: '100%',
-  maxWidth: '400px',
+  maxWidth: '800px',
   boxSizing: 'border-box',
 };
 

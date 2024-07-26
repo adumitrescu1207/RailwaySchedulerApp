@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../utils/MyStyles.css';
 import { formatTime } from '../utils/timeFormatter.tsx';
 import TrainDetails from '../utils/trainDetails.tsx';
+import { calculateJourneyTime } from '../utils/journeyTime.tsx';
 
 const SearchByDestination: React.FC = () => {
   const [destination, setDestination] = useState('');
@@ -51,6 +52,7 @@ const SearchByDestination: React.FC = () => {
                 destination={train.destination}
                 timeSource={formatTime(train.timeSource)}
                 timeDestination={formatTime(train.timeDestination)}
+                journeyTime={calculateJourneyTime(train.timeSource,train.timeDestination)}
               />
             </li>
           </CSSTransition>
@@ -81,7 +83,7 @@ const inputStyles: React.CSSProperties = {
   borderRadius: '4px',
   marginBottom: '10px',
   width: '100%',
-  maxWidth: '300px',
+  maxWidth: '730px',
   boxSizing: 'border-box',
 };
 
@@ -107,7 +109,7 @@ const listStyles: React.CSSProperties = {
   padding: '0',
   margin: '20px 0 0',
   textAlign: 'left',
-  maxWidth: '400px',
+  maxWidth: '800px',
   marginLeft: 'auto',
   marginRight: 'auto',
 };

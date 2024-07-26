@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import TrainDetails from '../utils/trainDetails';
 import { formatTime } from '../utils/timeFormatter';
+import { calculateJourneyTime } from '../utils/journeyTime';
 
 const RemoveTrain: React.FC = () => {
   const [id, setId] = useState('');
@@ -72,6 +73,7 @@ const RemoveTrain: React.FC = () => {
               destination={train.destination}
               timeSource={formatTime(train.timeSource)}
               timeDestination={formatTime(train.timeDestination)}
+              journeyTime={calculateJourneyTime(train.timeSource,train.timeDestination)}
             />
           </li>
           <button onClick={handleSubmit} style={buttonStyles}>Remove Train</button>
@@ -101,7 +103,7 @@ const inputStyles: React.CSSProperties = {
   border: '1px solid #ccc',
   borderRadius: '4px',
   width: '100%',
-  maxWidth: '400px',
+  maxWidth: '800px',
   boxSizing: 'border-box',
   marginBottom: '20px',
 };
@@ -129,7 +131,7 @@ const listStyles: React.CSSProperties = {
   padding: '10px',
   margin: '20px 0 0',
   textAlign: 'left',
-  maxWidth: '400px',
+  maxWidth: '800px',
   marginLeft: 'auto',
   marginRight: 'auto',
   fontSize: '1rem',
