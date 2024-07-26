@@ -42,9 +42,9 @@ const listItemStyles: React.CSSProperties = {
   padding: '10px',
   border: '1px solid #ddd',
   borderRadius: '4px',
-  backgroundColor: '#fff',
+  backgroundColor: '#cb9696',
   textAlign: 'center',
-  maxWidth: '400px',
+  maxWidth: '800px',
   marginLeft: 'auto',
   marginRight: 'auto',
 };
