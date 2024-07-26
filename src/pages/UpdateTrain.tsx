@@ -39,13 +39,15 @@ const UpdateTrain: React.FC = () => {
       .then(response => {
         if (response.data) {
           setTrain(response.data);
-        } else {
-          setError('No train found with the specified ID.');
         }
       })
       .catch(error => {
-        console.error('There was an error fetching the train!', error);
-        setError('Error fetching train data. Please try again.');
+        if(error.response && error.response.status === 400){
+          setError('No train found for the specified ID.');
+        }
+        else {
+          setError('Failed to fetch train data. Please try again.');
+        }
       });
   };
 
