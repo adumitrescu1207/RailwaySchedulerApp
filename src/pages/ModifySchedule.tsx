@@ -40,7 +40,7 @@ const listStyles: React.CSSProperties = {
   listStyleType: 'none',
   padding: '0',
   margin: '0 auto',
-  maxWidth: '300px',
+  maxWidth: '800px',
 };
 
 const linkStyles: React.CSSProperties = {
@@ -51,6 +51,6 @@ const linkStyles: React.CSSProperties = {
   fontSize: '1.1rem',
   padding: '10px',
   borderRadius: '5px',
-  backgroundColor: '#fff',
+  backgroundColor: '#cb9696',
 };
 export default ModifySchedule;

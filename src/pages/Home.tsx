@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Home: React.FC = () => {
   return (
     <div style={containerStyles}>
+      <h1 style={headerStyles}>Home</h1>
       <ul style={listStyles}>
         <li><Link to="/getSourceByTime" style={linkStyles}>Search by source</Link></li>
         <li><Link to="/getDestinationByTime" style={linkStyles}>Search by destination</Link></li>
@@ -26,7 +27,7 @@ const listStyles: React.CSSProperties = {
   listStyleType: 'none',
   padding: '0',
   margin: '0 auto',
-  maxWidth: '300px',
+  maxWidth: '800px',
 };
 
 const linkStyles: React.CSSProperties = {
@@ -37,7 +38,13 @@ const linkStyles: React.CSSProperties = {
   fontSize: '1.1rem',
   padding: '10px',
   borderRadius: '5px',
-  backgroundColor: '#fff',
+  backgroundColor: '#cb9696',
+};
+
+const headerStyles: React.CSSProperties = {
+  fontSize: '2rem',
+  color: '#000',
+  marginBottom: '20px',
 };
 
 export default Home;
