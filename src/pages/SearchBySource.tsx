@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import '../MyStyles.css';
+import '../utils/MyStyles.css';
 import { formatTime } from '../utils/timeFormatter';
 import TrainDetails from '../utils/trainDetails';
 

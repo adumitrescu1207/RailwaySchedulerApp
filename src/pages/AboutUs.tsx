@@ -5,17 +5,17 @@ const AboutUs: React.FC = () => {
   return (
     <div style={containerStyles}>
       <h1 style={headerStyles}>About Us</h1>
-      <li style={listItemStyles}>
+      <div style={listItemStyles}>
         Welcome to the Railway Scheduler application. Our mission is to provide the best scheduling
         solution for railways.
-      </li>
-      <li style={listItemStyles}>
+      </div>
+      <div style={listItemStyles}>
         This application allows you to search train schedules by source,
         destination, and ID. You can also modify the schedules as needed.
-      </li>
-      <li style={listItemStyles}>
+      </div>
+      <div style={listItemStyles}>
         The schedule remains the same every day, so you don't have to worry.
-      </li>
+      </div>
       <img src={images} style={imageStyles}/>
     </div>
   );
@@ -36,7 +36,7 @@ const headerStyles: React.CSSProperties = {
 };
 
 const listItemStyles: React.CSSProperties = {
-  fontSize: '1rem',
+  fontSize: '1.1rem',
   color: '#000',
   margin: '10px 0',
   padding: '10px',
