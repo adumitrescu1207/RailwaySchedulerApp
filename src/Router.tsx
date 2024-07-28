@@ -11,6 +11,7 @@ import RemoveTrain from './pages/RemoveTrain.tsx';
 import Layout from './pages/Layout.tsx';
 import Header from './pages/Header.tsx';
 import AboutUs from './pages/AboutUs.tsx';
+import WrongPath from './pages/WrongPath';
 
 const AppRouter: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const AppRouter: React.FC = () => {
           <Route path="/modify/updateTrain" element={<UpdateTrain />} />
           <Route path="/modify/removeTrain" element={<RemoveTrain />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/*" element={<WrongPath />} />
         </Routes>
       </Layout>
     </Router>

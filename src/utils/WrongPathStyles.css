@@ -1,0 +1,13 @@
+@keyframes rotateOnce {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotating-image {
+    animation: rotateOnce 4s ease-in-out;
+  }
+  
