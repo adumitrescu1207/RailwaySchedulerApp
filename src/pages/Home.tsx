@@ -6,8 +6,8 @@ const Home: React.FC = () => {
     <div style={containerStyles}>
       <h1 style={headerStyles}>Home</h1>
       <ul style={listStyles}>
-        <li><Link to="/getSourceByTime" style={linkStyles}>Search by source</Link></li>
-        <li><Link to="/getDestinationByTime" style={linkStyles}>Search by destination</Link></li>
+        <li><Link to="/getBySource" style={linkStyles}>Search by source</Link></li>
+        <li><Link to="/getByDestination" style={linkStyles}>Search by destination</Link></li>
         <li><Link to="/getById" style={linkStyles}>Search by ID</Link></li>
         <li><Link to="/modify" style={linkStyles}>Modify Schedule</Link></li>
       </ul>

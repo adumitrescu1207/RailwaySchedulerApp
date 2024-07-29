@@ -20,8 +20,8 @@ const AppRouter: React.FC = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/getSourceByTime" element={<SearchBySource />} />
-          <Route path="/getDestinationByTime" element={<SearchByDestination />} />
+          <Route path="/getBySource" element={<SearchBySource />} />
+          <Route path="/getByDestination" element={<SearchByDestination />} />
           <Route path="/getById" element={<SearchById />} />
           <Route path="/modify" element={<ModifySchedule />} />
           <Route path="/modify/addTrain" element={<AddTrain />} />
